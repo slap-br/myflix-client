@@ -8,6 +8,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       }}
     >
       {movie.title}
+      
     </div>
   );
 };
@@ -15,8 +16,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    author: PropTypes.string
+    description: PropTypes.string.isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };
