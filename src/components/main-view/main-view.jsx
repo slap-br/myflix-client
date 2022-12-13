@@ -18,9 +18,16 @@ export const MainView = () => {
             image: item.ImagePath,
             title: item.Title,
             releaseYear: item.ReleaseYear,
-            genre: `name: ${item.Genre.Name} description: ${item.Genre.Description}`,
-            director: `name: ${item.Director.Name} bio: ${item.Director.Bio}
-            birth: ${item.Director.Birth} death ${item.Director.Death}`
+            genre: {
+              name: item.Genre.Name,
+              description: item.Genre.Description
+            },
+            director:{
+              name: item.Director.Name,
+              bio: item.Director.Bio,
+              birth: item.Director.Birth,
+              death: item.Director.Death,
+            }
           };
         });
         console.log(data);
