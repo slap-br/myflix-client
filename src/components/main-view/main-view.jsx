@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card"
-import { MovieView } from "../movie-view/movie-view"
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -17,29 +17,40 @@ export const MainView = () => {
             description: item.Description,
             image: item.ImagePath,
             title: item.Title,
-            genre: `Name: ${item.Genre.Name} Description: ${item.Genre.Description}`
+            releaseYear: item.ReleaseYear,
+            genre: `name: ${item.Genre.Name} description: ${item.Genre.Description}`,
+            director: `name: ${item.Director.Name} bio: ${item.Director.Bio}
+            birth: ${item.Director.Birth} death ${item.Director.Death}`
           };
-      });
-       setMovies(moviesFromApi)
+        });
+        console.log(data);
+        setMovies(moviesFromApi);
       });
   }, []);
 
   if (selectedMovie) {
-    return ( <MovieView movie={selectedMovie} 
-    onBackClick={() => setSelectedMovie(null)} />);
+    return (
+      <MovieView
+        movie={selectedMovie}
+        onBackClick={() => setSelectedMovie(null)}
+      />
+    );
   }
 
-  if(movies.length === 0) {
+  if (movies.length === 0) {
     return <div> list is empty! oh no! </div>;
   }
-  
+
   return (
     <div>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie}
-        onMovieClick={(newSelectedMovie) => {
-          setSelectedMovie(newSelectedMovie);
-        }} />
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
+          }}
+        />
       ))}
     </div>
   );
