@@ -1,11 +1,28 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    if (!token) return;
+    //REPLACE THE LINK FOR "https://smclub.herokuapp.com/movies"???
+    fetch("..../movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((movies) => {
+        setMovies(movies);
+      });
+  }, [token]);
 
   useEffect(() => {
     fetch("https://smclub.herokuapp.com/movies")
@@ -22,11 +39,11 @@ export const MainView = () => {
               name: item.Genre.Name,
               description: item.Genre.Description
             },
-            director:{
+            director: {
               name: item.Director.Name,
               bio: item.Director.Bio,
               birth: item.Director.Birth,
-              death: item.Director.Death,
+              death: item.Director.Death
             }
           };
         });
@@ -34,6 +51,20 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, []);
+
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or <SignupView />
+      </>
+    );
+  }
 
   if (selectedMovie) {
     return (
@@ -49,7 +80,17 @@ export const MainView = () => {
   }
 
   return (
+    /* logout button */
     <div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
