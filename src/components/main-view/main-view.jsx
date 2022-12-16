@@ -12,6 +12,7 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // USE EFFECT PARA CARREGAR APOS LOGAR NA BAGASSA! AQUI ABAIXO TALVEZ?
   useEffect(() => {
     if (!token) return;
     //REPLACE THE LINK FOR "https://smclub.herokuapp.com/movies"???

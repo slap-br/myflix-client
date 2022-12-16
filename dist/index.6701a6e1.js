@@ -25290,6 +25290,7 @@ const MainView = ()=>{
     const [token, setToken] = _react.useState(storedToken ? storedToken : null);
     const [movies, setMovies] = _react.useState([]);
     const [selectedMovie, setSelectedMovie] = _react.useState(null);
+    // USE EFFECT PARA CARREGAR APOS LOGAR NA BAGASSA! AQUI ABAIXO TALVEZ?
     _react.useEffect(()=>{
         if (!token) return;
         //REPLACE THE LINK FOR "https://smclub.herokuapp.com/movies"???
@@ -25339,7 +25340,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 58
+                    lineNumber: 59
                 },
                 __self: undefined
             }),
@@ -25347,7 +25348,7 @@ const MainView = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx(_signupView.SignupView, {
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 64
+                    lineNumber: 65
                 },
                 __self: undefined
             })
@@ -25359,14 +25360,14 @@ const MainView = ()=>{
         ,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 71
+            lineNumber: 72
         },
         __self: undefined
     }));
     if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 79
+            lineNumber: 80
         },
         __self: undefined,
         children: " list is empty! oh no! "
@@ -25374,7 +25375,7 @@ const MainView = ()=>{
     return(/* logout button */ /*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 84
+            lineNumber: 85
         },
         __self: undefined,
         children: [
@@ -25386,7 +25387,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 85
+                    lineNumber: 86
                 },
                 __self: undefined,
                 children: "Logout"
@@ -25398,7 +25399,7 @@ const MainView = ()=>{
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 95
+                        lineNumber: 96
                     },
                     __self: undefined
                 }, movie.id)
@@ -26575,19 +26576,17 @@ const LoginView = ({ onLoggedIn  })=>{
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
-            access: username,
+            user: username,
             secret: password
         };
-        fetch("https://smclub.herokuapp.com/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "Application/json"
-            },
-            body: JSON.stringify(data)
-        }).then((response)=>response.json()
+        fetch(`https://smclub.herokuapp.com/login?Username=${username}&Password=${password}`, {
+            method: "POST"
+        }).then((response)=>response.json(data)
         ).then((data1)=>{
             console.log("login response: ", data1);
             if (data1.user) {
+                console.log("user", data1.user);
+                console.log("token", data1.token);
                 localStorage.setItem("user", JSON.stringify(data1.user));
                 localStorage.setItem("token", data1.token);
                 onLoggedIn(data1.user, data1.token);
@@ -26600,14 +26599,14 @@ const LoginView = ({ onLoggedIn  })=>{
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 40
+            lineNumber: 41
         },
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 41
+                    lineNumber: 42
                 },
                 __self: undefined,
                 children: [
@@ -26620,7 +26619,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         required: true,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 43
+                            lineNumber: 44
                         },
                         __self: undefined
                     })
@@ -26629,7 +26628,7 @@ const LoginView = ({ onLoggedIn  })=>{
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 50
+                    lineNumber: 51
                 },
                 __self: undefined,
                 children: [
@@ -26642,7 +26641,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         required: true,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 52
+                            lineNumber: 53
                         },
                         __self: undefined
                     })
@@ -26652,7 +26651,7 @@ const LoginView = ({ onLoggedIn  })=>{
                 type: "submit",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 59
+                    lineNumber: 60
                 },
                 __self: undefined,
                 children: " Submit "
