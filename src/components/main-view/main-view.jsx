@@ -13,17 +13,6 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   // USE EFFECT PARA CARREGAR APOS LOGAR NA BAGASSA! AQUI ABAIXO TALVEZ?
-  useEffect(() => {
-    if (!token) return;
-    //REPLACE THE LINK FOR "https://smclub.herokuapp.com/movies"???
-    fetch("..../movies", {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then((response) => response.json())
-      .then((movies) => {
-        setMovies(movies);
-      });
-  }, [token]);
 
   useEffect(() => {
     fetch("https://smclub.herokuapp.com/movies")
@@ -47,10 +36,17 @@ export const MainView = () => {
               death: item.Director.Death
             }
           };
-        });
+        })
         console.log(data);
         setMovies(moviesFromApi);
-      });
+      }); if (!token) return;
+      fetch("..../movies", {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then((response) => response.json())
+        .then((movies) => {
+          setMovies(movies);
+        });
   }, []);
 
   if (!user) {

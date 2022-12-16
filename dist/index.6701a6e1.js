@@ -25292,20 +25292,6 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = _react.useState(null);
     // USE EFFECT PARA CARREGAR APOS LOGAR NA BAGASSA! AQUI ABAIXO TALVEZ?
     _react.useEffect(()=>{
-        if (!token) return;
-        //REPLACE THE LINK FOR "https://smclub.herokuapp.com/movies"???
-        fetch("..../movies", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()
-        ).then((movies1)=>{
-            setMovies(movies1);
-        });
-    }, [
-        token
-    ]);
-    _react.useEffect(()=>{
         fetch("https://smclub.herokuapp.com/movies").then((response)=>response.json()
         ).then((data)=>{
             const moviesFromApi = data.map((item)=>{
@@ -25330,6 +25316,15 @@ const MainView = ()=>{
             console.log(data);
             setMovies(moviesFromApi);
         });
+        if (!token) return;
+        fetch("..../movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()
+        ).then((movies1)=>{
+            setMovies(movies1);
+        });
     }, []);
     if (!user) return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
         children: [
@@ -25340,7 +25335,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 59
+                    lineNumber: 55
                 },
                 __self: undefined
             }),
@@ -25348,7 +25343,7 @@ const MainView = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx(_signupView.SignupView, {
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 65
+                    lineNumber: 61
                 },
                 __self: undefined
             })
@@ -25360,14 +25355,14 @@ const MainView = ()=>{
         ,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 72
+            lineNumber: 68
         },
         __self: undefined
     }));
     if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 80
+            lineNumber: 76
         },
         __self: undefined,
         children: " list is empty! oh no! "
@@ -25375,7 +25370,7 @@ const MainView = ()=>{
     return(/* logout button */ /*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 85
+            lineNumber: 81
         },
         __self: undefined,
         children: [
@@ -25387,7 +25382,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 86
+                    lineNumber: 82
                 },
                 __self: undefined,
                 children: "Logout"
@@ -25399,7 +25394,7 @@ const MainView = ()=>{
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 96
+                        lineNumber: 92
                     },
                     __self: undefined
                 }, movie.id)
@@ -25407,7 +25402,7 @@ const MainView = ()=>{
         ]
     }));
 };
-_s(MainView, "4jJTMG3xreZI0yvy2upuQxogWcU=");
+_s(MainView, "9wJBvfUyU2IigbyWC+M5y3EH9h4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
