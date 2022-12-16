@@ -25290,9 +25290,14 @@ const MainView = ()=>{
     const [token, setToken] = _react.useState(storedToken ? storedToken : null);
     const [movies, setMovies] = _react.useState([]);
     const [selectedMovie, setSelectedMovie] = _react.useState(null);
-    // USE EFFECT PARA CARREGAR APOS LOGAR NA BAGASSA! AQUI ABAIXO TALVEZ?
+    // USE   https://smclub.herokuapp.com/movies
     _react.useEffect(()=>{
-        fetch("https://smclub.herokuapp.com/movies").then((response)=>response.json()
+        if (!token) return;
+        fetch("https://smclub.herokuapp.com/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()
         ).then((data)=>{
             const moviesFromApi = data.map((item)=>{
                 return {
@@ -25316,16 +25321,9 @@ const MainView = ()=>{
             console.log(data);
             setMovies(moviesFromApi);
         });
-        if (!token) return;
-        fetch("..../movies", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()
-        ).then((movies1)=>{
-            setMovies(movies1);
-        });
-    }, []);
+    }, [
+        token
+    ]);
     if (!user) return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
@@ -25335,7 +25333,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 55
+                    lineNumber: 52
                 },
                 __self: undefined
             }),
@@ -25343,7 +25341,7 @@ const MainView = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx(_signupView.SignupView, {
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 61
+                    lineNumber: 58
                 },
                 __self: undefined
             })
@@ -25355,14 +25353,14 @@ const MainView = ()=>{
         ,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 68
+            lineNumber: 65
         },
         __self: undefined
     }));
     if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 76
+            lineNumber: 73
         },
         __self: undefined,
         children: " list is empty! oh no! "
@@ -25370,7 +25368,7 @@ const MainView = ()=>{
     return(/* logout button */ /*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 81
+            lineNumber: 78
         },
         __self: undefined,
         children: [
@@ -25382,7 +25380,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 82
+                    lineNumber: 79
                 },
                 __self: undefined,
                 children: "Logout"
@@ -25394,7 +25392,7 @@ const MainView = ()=>{
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 92
+                        lineNumber: 89
                     },
                     __self: undefined
                 }, movie.id)

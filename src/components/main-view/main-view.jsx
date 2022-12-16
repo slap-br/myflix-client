@@ -12,42 +12,39 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  // USE EFFECT PARA CARREGAR APOS LOGAR NA BAGASSA! AQUI ABAIXO TALVEZ?
+  // USE   https://smclub.herokuapp.com/movies
 
   useEffect(() => {
-    fetch("https://smclub.herokuapp.com/movies")
-      .then((response) => response.json())
-      .then((data) => {
-        const moviesFromApi = data.map((item) => {
-          return {
-            id: item._id,
-            description: item.Description,
-            image: item.ImagePath,
-            title: item.Title,
-            releaseYear: item.ReleaseYear,
-            genre: {
-              name: item.Genre.Name,
-              description: item.Genre.Description
-            },
-            director: {
-              name: item.Director.Name,
-              bio: item.Director.Bio,
-              birth: item.Director.Birth,
-              death: item.Director.Death
-            }
-          };
-        })
-        console.log(data);
-        setMovies(moviesFromApi);
-      }); if (!token) return;
-      fetch("..../movies", {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-        .then((response) => response.json())
-        .then((movies) => {
-          setMovies(movies);
-        });
-  }, []);
+    if (!token) return;
+    fetch("https://smclub.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      const moviesFromApi = data.map((item) => {
+        return {
+          id: item._id,
+          description: item.Description,
+          image: item.ImagePath,
+          title: item.Title,
+          releaseYear: item.ReleaseYear,
+          genre: {
+            name: item.Genre.Name,
+            description: item.Genre.Description
+          },
+          director: {
+            name: item.Director.Name,
+            bio: item.Director.Bio,
+            birth: item.Director.Birth,
+            death: item.Director.Death
+        }
+      };
+    })
+    console.log(data);
+    setMovies(moviesFromApi);
+  });
+
+  }, [token]);
 
   if (!user) {
     return (
