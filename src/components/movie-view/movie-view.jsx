@@ -43,5 +43,3 @@ export const MovieView = ({ movie, onBackClick }) => {
     </Card>
   );
 };
-
-//Criar classes para alinhar os textos
