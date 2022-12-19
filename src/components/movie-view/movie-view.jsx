@@ -6,7 +6,6 @@ export const MovieView = ({ movie, onBackClick }) => {
     <Card bg="dark" text="light">
       <Card.Header> 
             <div className="important">
-              <span>Title: </span>
               <span >{movie.title}</span>
             </div>
       </Card.Header>
