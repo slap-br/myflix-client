@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "./signup-view.scss";
 
 
@@ -22,7 +20,7 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    fetch("https://smclub.herokuapp.com/users", {
+    fetch("`https://smclub.herokuapp.com/users`", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
