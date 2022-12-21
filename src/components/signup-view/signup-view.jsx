@@ -38,6 +38,7 @@ export const SignupView = () => {
 
 
   return (
+  <Card>
     <Form onSubmit={handleSubmit}>
       <Form.Group className="description" controlId="signUpFormUsername">
         <Form.Label>Username:</Form.Label>
@@ -85,6 +86,7 @@ export const SignupView = () => {
         Register
       </Button>
     </Form>
+  </Card>
   );
 };
 

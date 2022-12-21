@@ -14,7 +14,6 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  // const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     if (!token) return;
@@ -53,6 +52,8 @@ export const MainView = () => {
         user={user}
         onLoggedOut={() => {
           setUser(null);
+          setToken(null);
+          localStorage.clear();
         }}
       />
       <Row className="justify-content-md-center">
@@ -75,7 +76,7 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                {!user ? (
+                {user ? (
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
@@ -91,7 +92,7 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/movies/:moviesId"
+            path="/movies/:movieId"
             element={
               <>
                 {!user ? (
@@ -118,7 +119,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.id} md={3}>
+                      <Col className="mb-4" key={movie.id} xs={12} md={3}>
                         <MovieCard movie={movie} />
                       </Col>
                     ))}
