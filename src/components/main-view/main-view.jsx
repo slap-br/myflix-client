@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -18,12 +19,12 @@ export const MainView = () => {
   useEffect(() => {
     if (!token) return;
     fetch("https://smclub.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((item) => {
-          return {
+          var moviesToReturn = {
             id: item._id,
             description: item.Description,
             image: item.ImagePath,
@@ -31,24 +32,26 @@ export const MainView = () => {
             releaseYear: item.ReleaseYear,
             genre: {
               name: item.Genre.Name,
-              description: item.Genre.Description
+              description: item.Genre.Description,
             },
             director: {
               name: item.Director.Name,
               bio: item.Director.Bio,
               birth: item.Director.Birth,
-              death: item.Director.Death
-            }
+              death: item.Director.Death,
+            },
           };
+          return moviesToReturn;
         });
-        console.log(data);
+        // console.log("moviesFromApi", moviesFromApi);
+        // console.log("movies", movies);
         setMovies(moviesFromApi);
       });
   }, [token]);
 
   return (
     <BrowserRouter>
-        <NavigationBar
+      <NavigationBar
         user={user}
         onLoggedOut={() => {
           setUser(null);
@@ -107,7 +110,6 @@ export const MainView = () => {
               </>
             }
           />
-
           <Route
             path="/"
             element={
@@ -124,6 +126,20 @@ export const MainView = () => {
                       </Col>
                     ))}
                   </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={5}>
+                    <ProfileView movies={movies} />
+                  </Col>
                 )}
               </>
             }

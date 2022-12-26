@@ -20,9 +20,7 @@ return (
               <div>
                 <span className="important"> {movie.title} </span>
               </div>
-              <div>
               <Button size="sm" variant="secondary"> Add to Favorites</Button>
-              </div>
         </Card.Header>
         <Card.Body>
               <div className="description">
@@ -48,7 +46,7 @@ return (
                 </div>
             </Card.Body>
                 <Card.Footer>
-                    <Link to="{`/`}">
+                    <Link to="/">
                         <Button className="back-button" > Back </Button>
                     </Link>
                 </Card.Footer>

@@ -1,34 +1,34 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-function favoriteMovies(favoriteMoviesList) {
-
-
-    return (
+export const FavoriteMovies = ({ usersFavMovies }) => {
+  return (
     <>
-        <Row>
-            <Col xs={12}>
-            <h2> Favorite movies</h2>
+      <Row>
+        <Col xs={12}>
+          <h2> Favorite movies</h2>
+        </Col>
+      </Row>
+      <Row>
+        {usersFavMovies.map((movie) => {
+          return (
+            <Col xs={12} md={6} lg={3} key={movie.id}>
+              <img crossOrigin="anonymous" src={movie.image} />
+              <Link to={`/movies/${movie.id}`}>
+                <h4> {movie.title} </h4>
+              </Link>
+              <Button variant="secondary" onClick={() => removeFav(movie.id)}>
+                {" "}
+                Remove from list{" "}
+              </Button>
             </Col>
-        </Row>
-        <Row>
-            {favoriteMoviesList.map((movies) =>{
-                return(
-                    <Col xs={12} md={6} lg={3} 
-                    key={movies.id}>
-                        <img src={movies.image} />
-                        <Link to={`/movies/${movies.id}`}>
-                            <h4> {movies.title} </h4>
-                        </Link>
-                        <Button variant="seconday" OnClick={() => removeFav(movie.id)}> Remove from list </Button>
-                    </Col>
-                )
-                })
-            }
-        </Row>
+          );
+        })}
+      </Row>
     </>
-    )
-}
+  );
+};
 
-export default favoriteMovies;
+export default FavoriteMovies;
