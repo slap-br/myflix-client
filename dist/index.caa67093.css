@@ -10086,6 +10086,31 @@ textarea.form-control-lg {
   padding-top: 50px;
 }
 
+.fav-movie {
+  margin: 10px;
+}
+.fav-movie figure {
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: auto;
+}
+.fav-movie figure img {
+  height: 300px;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+}
+.fav-movie button.btn {
+  margin: auto;
+  display: block;
+}
+
+.card {
+  margin-bottom: 15px;
+}
 @charset "UTF-8";/*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

@@ -1,0 +1,15 @@
+.important {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+
+.description {
+  color: white;
+  font-weight: lighter;
+}
+
+.formset {
+  padding-top: 50px;
+}/*# sourceMappingURL=signup-view.css.map */

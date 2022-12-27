@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
+import { Button, Card } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import "./signup-view.scss";
-
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -17,15 +16,15 @@ export const SignupView = () => {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday
+      Birthday: birthday,
     };
 
     fetch("`https://smclub.herokuapp.com/users`", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-type": "application/json"
-      }
+        "Content-type": "application/json",
+      },
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
@@ -36,57 +35,55 @@ export const SignupView = () => {
     });
   };
 
-
   return (
-  <Card>
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="description" controlId="signUpFormUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength="3"
-          placeholder="Enter your Username"
-        />
-      </Form.Group>
+    <Card bg="dark" text="light">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="description" controlId="signUpFormUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            minLength="3"
+            placeholder="Enter your Username"
+          />
+        </Form.Group>
 
-      <Form.Group className="description" controlId="signUpFormPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          placeholder="Type your Password"
-        />
-      </Form.Group>
-      <Form.Group className="description" controlId="signUpFormEmail">
-        <Form.Label>Email:</Form.Label>
-        <Form.Control
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          placeholder="Type your Email"
-        />
-      </Form.Group>
-      <Form.Group className="description" controlId="signUpFormBirthday">
-        <Form.Label>Birthday:</Form.Label>
-        <Form.Control
-          type="date"
-          className="description"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-          required
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Register
-      </Button>
-    </Form>
-  </Card>
+        <Form.Group className="description" controlId="signUpFormPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="Type your Password"
+          />
+        </Form.Group>
+        <Form.Group className="description" controlId="signUpFormEmail">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="Type your Email"
+          />
+        </Form.Group>
+        <Form.Group className="description" controlId="signUpFormBirthday">
+          <Form.Label>Birthday:</Form.Label>
+          <Form.Control
+            type="date"
+            className="description"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Register
+        </Button>
+      </Form>
+    </Card>
   );
 };
-

@@ -4,16 +4,13 @@ import { Button, Card, CardGroup, Row, Container } from "react-bootstrap";
 import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
-import updateUser from "./update-user";
+import UpdateUser from "./update-user";
 
 export const ProfileView = ({ movies }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-
   const [userData, setUserData] = useState([]);
-
   const [token, setToken] = useState(storedToken ? storedToken : null);
-
   const [currentUsername, setusername] = useState(
     storedUser ? storedUser : null
   );
@@ -52,6 +49,32 @@ export const ProfileView = ({ movies }) => {
     getUserData();
   }, []);
 
+  const isRequestValid = (userCredentials) => {
+    if (!userCredentials.Username) {
+      alert("Username required");
+      return false;
+    } else if (userCredentials.Username.length < 5) {
+      alert("Username must be 5 or more characters");
+      return false;
+    }
+    if (!userCredentials.Password) {
+      alert("Password required");
+      return false;
+    } else if (userCredentials.Password.length < 6) {
+      alert("Password must be 6 or more characters");
+      return false;
+    }
+    if (!userCredentials.Email) {
+      alert("Email required");
+      return false;
+    } else if (userCredentials.Email.indexOf("@") === -1) {
+      alert("Email must be a valid email address");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleUpdate = () => {
     if (!token) return;
 
@@ -61,6 +84,8 @@ export const ProfileView = ({ movies }) => {
       Email: email ? email : userData.Email,
       Birthday: birthday ? birthday : userData.Birthday,
     };
+
+    if (!isRequestValid(userCredentials)) return;
 
     fetch(`https://smclub.herokuapp.com/users/${storedUser.Username}`, {
       method: "PUT",
@@ -102,92 +127,71 @@ export const ProfileView = ({ movies }) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    if (!token) return;
+
+    var userCredentials = {
+      Username: e.target.elements.Username.value,
+      Password: e.target.elements.Password.value,
+      Email: e.target.elements.Email.value,
+    };
+
+    if (!isRequestValid(userCredentials)) return;
+
+    const url = `https://smclub.herokuapp.com/users/${userData.Username}`;
+
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userCredentials),
+    };
+
+    fetch(url, requestOptions)
+      .then((response) => response.json())
+      .then(handleResponse)
+      .catch((e) => {
+        alert("Something is ERRADO!");
+      });
+  };
+
   return (
-    <Container className="profile-container d-flex justify-content-center align-items-center">
-      <Row xs={1}>
-        <Row>
-          <h2>Your Profile</h2>
-        </Row>
-        <Col>
-          <Card bg="secondary" className="profile-card">
+    <Container>
+      <Row>
+        <Col xs={4} sm={4}>
+          <Card bg="dark" text="light">
             <Card.Body>
-              <Card.Title>Name: {userData.Username}</Card.Title>
-              <Card.Text>Email: {userData.Email}</Card.Text>
-              <Card.Text>Birthday: {userData.Birth_Date}</Card.Text>
+              <UserInfo
+                name={userData.Username}
+                email={userData.Email}
+                birthday={userData.Birth_Date}
+              />
             </Card.Body>
           </Card>
         </Col>
-        <FavoriteMovies
-          usersFavMovies={movies.filter((user) =>
-            userData.FavoriteMovies.includes(user.id)
-          )}
-        />
-        <Row>
-          <h2>Update Info</h2>
-        </Row>
-        <Col>
-          <Card bg="dark">
+        <Col xs={8} sm={8}>
+          <Card bg="dark" text="light">
             <Card.Body>
-              <Form>
-                <Form.Group>
-                  <Form.Label>Username:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={currentUsername}
-                    onChange={(e) => setusername(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Password:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Email:</Form.Label>
-                  <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Birthday:</Form.Label>
-                  <Form.Control
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                  />
-                </Form.Group>
-                <Button
-                  className="mt-2"
-                  variant="info"
-                  onClick={() => {
-                    handleUpdate();
-                  }}
-                >
-                  Update Info
-                </Button>
-              </Form>
+              <UpdateUser
+                handleSubmit={handleSubmit}
+                handleUpdate={handleUpdate}
+                user={userData}
+              />
             </Card.Body>
           </Card>
         </Col>
-        <Row>
-          <h2>Delete Account</h2>
-        </Row>
-        <Col>
-          <Card bg="dark">
+      </Row>
+      <Row>
+        <Col xs={12} sm={12}>
+          <Card bg="dark" text="light">
             <Card.Body>
-              <Button
-                variant="danger"
-                onClick={() => {
-                  handleDelete();
-                }}
-              >
-                Delete Account
-              </Button>
+              <FavoriteMovies
+                usersFavMovies={movies.filter((user) =>
+                  userData.FavoriteMovies.includes(user.id)
+                )}
+              />
             </Card.Body>
           </Card>
         </Col>
