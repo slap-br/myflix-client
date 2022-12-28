@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
+import "./profile-view.scss";
 
 export const ProfileView = ({ movies }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -104,29 +105,6 @@ export const ProfileView = ({ movies }) => {
       });
   };
 
-  const handleDelete = () => {
-    if (storedUser.Username && token) {
-      let confirmDelete = confirm(
-        "Are you sure you want to delete your account permanently?"
-      );
-      if (!confirmDelete) return;
-
-      fetch(`https://smclub.herokuapp.com/users/${storedUser.Username}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          alert("Your account was permanently deleted.");
-          localStorage.clear();
-          window.open("/", "_self");
-        })
-        .catch((e) => {
-          alert("Something is ERRADO!");
-        });
-    }
-  };
-
   const handleSubmit = (e) => {
     if (!token) return;
 
@@ -158,13 +136,13 @@ export const ProfileView = ({ movies }) => {
   };
 
   return (
-    <Container>
+    <Container className="container-mt">
       <Row>
         <Col xs={4} sm={4}>
           <Card bg="dark" text="light">
             <Card.Body>
               <UserInfo
-                name={userData.Username}
+                username={userData.Username}
                 email={userData.Email}
                 birthday={userData.Birth_Date}
               />

@@ -1,4 +1,4 @@
-.important{
+.important {
   color: white;
   font-weight: bold;
 }
@@ -9,7 +9,7 @@
   text-align: left;
 }
 
-.formset{
+.formset {
   padding-top: 250px;
   text-align: center;
   align-items: center;
@@ -20,11 +20,11 @@
   max-width: 95%;
 }
 
-.btn-login{
+.btn-login {
   margin-top: 15px;
   width: 100%;
 }
 
-.label{
+.label {
   margin-left: 10px;
-}
+}/*# sourceMappingURL=login-view.css.map */

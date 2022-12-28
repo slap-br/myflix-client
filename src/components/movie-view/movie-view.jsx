@@ -38,6 +38,7 @@ export const MovieView = ({ movies }) => {
               <span className="important"> {movie.title} </span>
             </div>
             <Button
+              className="fav-btn"
               size="sm"
               variant="secondary"
               onClick={addFavorite(movie.id)}
@@ -46,35 +47,35 @@ export const MovieView = ({ movies }) => {
             </Button>
           </Card.Header>
           <Card.Body>
-            <div className="description">
+            <div>
               <div>
                 <Card.Img
-                  className="w-100"
+                  className="cardimage"
                   crossOrigin="anonymous"
                   src={movie.image}
                 />
               </div>
               <div>
-                <span className="label">Description: </span>
-                <span>{movie.description}</span>
+                <span className="labeltitle">Description: </span>
+                <span className="description">{movie.description}</span>
               </div>
               <div>
-                <span className="label">Release Year: </span>
-                <span>{movie.releaseYear}</span>
+                <span className="labeltitle">Release Year: </span>
+                <span className="description">{movie.releaseYear}</span>
               </div>
               <div>
-                <span className="label">Genre: </span>
-                <span>{movie.genre.name}</span>
+                <span className="labeltitle">Genre: </span>
+                <span className="description">{movie.genre.name}</span>
               </div>
               <div>
-                <span className="label">Director: </span>
-                <span>{movie.director.name}</span>
+                <span className="labeltitle">Director: </span>
+                <span className="description">{movie.director.name}</span>
               </div>
             </div>
           </Card.Body>
           <Card.Footer>
             <Link to="/">
-              <Button className="back-button"> Back </Button>
+              <Button className="btn-login"> Back </Button>
             </Link>
           </Card.Footer>
         </Card>

@@ -1,15 +1,30 @@
-  .important{
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-  }
+.important{
+  color: white;
+  font-weight: bold;
+}
 
-  .description {
-    color: white;
-    font-weight: lighter;
-  }
+.description {
+  color: white;
+  font-weight: lighter;
+  text-align: left;
+}
 
-  .formset{
-    padding-top: 50px;
-  }
+.formset{
+  padding-top: 250px;
+  text-align: center;
+  align-items: center;
+}
+
+.formctrl {
+  margin: 10px;
+  max-width: 95%;
+}
+
+.btn-login{
+  margin-top: 15px;
+  width: 100%;
+}
+
+.label{
+  margin-left: 10px;
+}

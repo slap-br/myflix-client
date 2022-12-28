@@ -14,11 +14,11 @@ export const MovieCard = ({ movie }) => {
         <Card.Title className="important"> {movie.title} </Card.Title>
         <Card.Text className="description"> {movie.director.name} </Card.Text>
       </Card.Body>
-        <Card.Footer>
-          <Link to={`/movies/${encodeURIComponent(movie.id)}`}> 
-          <Button className="open-button"> Open </Button>
-          </Link>
-        </Card.Footer>
+      <Card.Footer>
+        <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
+          <Button className="btn-login">Open</Button>
+        </Link>
+      </Card.Footer>
     </Card>
   );
 };
@@ -32,6 +32,6 @@ MovieCard.propTypes = {
     }),
     Genre: PropTypes.shape({
       name: PropTypes.string.isRequired,
-    })
-  }).isRequired
+    }),
+  }).isRequired,
 };
