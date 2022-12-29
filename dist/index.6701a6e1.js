@@ -25483,8 +25483,6 @@ const MainView = ()=>{
                 };
                 return moviesToReturn;
             });
-            // console.log("moviesFromApi", moviesFromApi);
-            // console.log("movies", movies);
             setMovies(moviesFromApi);
         });
     }, [
@@ -25493,7 +25491,7 @@ const MainView = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 53
+            lineNumber: 51
         },
         __self: undefined,
         children: [
@@ -25506,7 +25504,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 54
+                    lineNumber: 52
                 },
                 __self: undefined
             }),
@@ -25514,13 +25512,13 @@ const MainView = ()=>{
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 62
+                    lineNumber: 60
                 },
                 __self: undefined,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 63
+                        lineNumber: 61
                     },
                     __self: undefined,
                     children: [
@@ -25537,7 +25535,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 64
+                                lineNumber: 62
                             },
                             __self: undefined
                         }),
@@ -25558,7 +25556,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 78
+                                lineNumber: 76
                             },
                             __self: undefined
                         }),
@@ -25579,7 +25577,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 97
+                                lineNumber: 95
                             },
                             __self: undefined
                         }),
@@ -25605,7 +25603,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 113
+                                lineNumber: 111
                             },
                             __self: undefined
                         }),
@@ -25624,7 +25622,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 133
+                                lineNumber: 131
                             },
                             __self: undefined
                         })
@@ -25662,7 +25660,6 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-//ADICIONEI CLASSE  EM MOVIE CARD PARA DAR MARGIN TOP PARA OS FILMES NAO COLIDIREM COM O NAVBAR
 var _movieCardScss = require("./movie-card.scss");
 const MovieCard = ({ movie  })=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
@@ -25671,7 +25668,7 @@ const MovieCard = ({ movie  })=>{
         text: "light",
         __source: {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 11
+            lineNumber: 10
         },
         __self: undefined,
         children: [
@@ -25681,14 +25678,14 @@ const MovieCard = ({ movie  })=>{
                 src: movie.image,
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 12
+                    lineNumber: 11
                 },
                 __self: undefined
             }),
             /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 13
+                    lineNumber: 12
                 },
                 __self: undefined,
                 children: [
@@ -25696,7 +25693,7 @@ const MovieCard = ({ movie  })=>{
                         className: "important",
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 14
+                            lineNumber: 13
                         },
                         __self: undefined,
                         children: [
@@ -25709,7 +25706,7 @@ const MovieCard = ({ movie  })=>{
                         className: "description",
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 15
+                            lineNumber: 14
                         },
                         __self: undefined,
                         children: [
@@ -25723,21 +25720,21 @@ const MovieCard = ({ movie  })=>{
             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Footer, {
                 __source: {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 17
+                    lineNumber: 16
                 },
                 __self: undefined,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                     to: `/movies/${encodeURIComponent(movie.id)}`,
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 18
+                        lineNumber: 17
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                         className: "btn-login",
                         __source: {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 19
+                            lineNumber: 18
                         },
                         __self: undefined,
                         children: "Open"
@@ -44741,12 +44738,12 @@ const ProfileView = ({ movies  })=>{
                                 lineNumber: 167
                             },
                             __self: undefined,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_favoriteMoviesDefault.default, {
+                            children: userData.lenght > 0 && /*#__PURE__*/ _jsxRuntime.jsx(_favoriteMoviesDefault.default, {
                                 usersFavMovies: movies.filter((user)=>userData.FavoriteMovies.includes(user.id)
                                 ),
                                 __source: {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 168
+                                    lineNumber: 169
                                 },
                                 __self: undefined
                             })
@@ -45114,7 +45111,6 @@ function UpdateUser({ handleSubmit , handleUpdate , user  }) {
                         /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
                             type: "password",
                             name: "Password",
-                            defaultValue: user.Password,
                             __source: {
                                 fileName: "src/components/profile-view/update-user.jsx",
                                 lineNumber: 22

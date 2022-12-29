@@ -43,8 +43,6 @@ export const MainView = () => {
           };
           return moviesToReturn;
         });
-        // console.log("moviesFromApi", moviesFromApi);
-        // console.log("movies", movies);
         setMovies(moviesFromApi);
       });
   }, [token]);

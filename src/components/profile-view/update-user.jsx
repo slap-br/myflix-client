@@ -22,7 +22,7 @@ function UpdateUser({ handleSubmit, handleUpdate, user }) {
           <Form.Control
             type="password"
             name="Password"
-            defaultValue={user.Password}
+            // defaultValue={user.Password}
             // onChange={(e) => handleUpdate(e)}
           />
         </Form.Group>
