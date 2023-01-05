@@ -1,5 +1,6 @@
 import { React } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Row, CardGroup, Container } from "react-bootstrap";
+import "./user-info.scss";
 
 export const UserInfo = ({ email, username, birthday }) => {
   const token = localStorage.getItem("token");
@@ -35,26 +36,40 @@ export const UserInfo = ({ email, username, birthday }) => {
       <h4> Your Info</h4>
       <p>Name: {username}</p>
       <p>Email: {email}</p>
-      <Button onClick={handleDelete}> Delete Account</Button>
+      <Button variant="outline-danger" onClick={handleDelete}>
+        Delete Account
+      </Button>
     </>
   );
 };
-export default UserInfo;
 
-// const handleDelete = (e) => {
-//   e.preventDefault();
-//   const token = localStorage.getItem('token');
-//   if (confirm('Are you sure? This cannot be undone!')) {
-//     axios
-//       .delete(`https://mats-js-myflixdb.herokuapp.com/users/${user}`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       })
-//       .then((res) => {
-//         alert(`Your account has been deleted. We're sorry to see you go!`);
-//         localStorage.clear();
-//         deleteUser({});
-//         window.open('/', '_self');
-//       })
-//       .catch((e) => console.log(e));
-//   }
+//   return (
+//     <>
+//       <Container>
+//         <Row>
+//           <CardGroup>
+//             <Card bg="dark" text="light">
+//               <Card.Body>
+//                 <Card.Title className="info-title">Your Info</Card.Title>
+//                 <span>
+//                   <p> Name:</p>
+//                 </span>
+//                 <span>
+//                   <p>{username}</p>
+//                 </span>
+//                 <p>Email: {email}</p>
+//                 <Card.Footer className="btn-delete">
+//                   <Button variant="outline-danger" onClick={handleDelete}>
+//                     Delete Account
+//                   </Button>
+//                 </Card.Footer>
+//               </Card.Body>
+//             </Card>
+//           </CardGroup>
+//         </Row>
+//       </Container>
+//     </>
+//   );
 // };
+
+export default UserInfo;

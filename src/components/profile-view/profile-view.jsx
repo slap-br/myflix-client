@@ -165,7 +165,7 @@ export const ProfileView = ({ movies }) => {
         <Col xs={12} sm={12}>
           <Card bg="dark" text="light">
             <Card.Body>
-              {userData.lenght > 0 && (
+              {userData.length > 0 && (
                 <FavoriteMovies
                   usersFavMovies={movies.filter((user) =>
                     userData.FavoriteMovies.includes(user.id)

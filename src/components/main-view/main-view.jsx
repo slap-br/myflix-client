@@ -66,7 +66,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col md={5} xs={12}>
                     <SignupView />
                   </Col>
                 )}
@@ -80,7 +80,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col md={5} xs={12}>
                     <LoginView
                       onLoggedIn={(user, token) => {
                         setUser(user);
@@ -101,7 +101,7 @@ export const MainView = () => {
                 ) : movies.lenght === 0 ? (
                   <Col> The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
+                  <Col md={8} xs={12}>
                     <MovieView movies={movies} />
                   </Col>
                 )}
@@ -119,7 +119,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.id} xs={12} md={3}>
+                      <Col className="mb-4" key={movie.id} md={3}>
                         <MovieCard movie={movie} />
                       </Col>
                     ))}

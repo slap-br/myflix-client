@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Button, Card, CardGroup, Row, Container } from "react-bootstrap";
-import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
@@ -31,12 +30,12 @@ export const MovieView = ({ movies }) => {
   };
 
   return (
-    <Container className="cardset">
+    <Container>
       <Row>
         <Card bg="dark" text="light">
           <Card.Header>
             <div>
-              <span className="title text-center "> {movie.title} </span>
+              <span className="important"> {movie.title} </span>
             </div>
             <Button
               className="fav-btn"

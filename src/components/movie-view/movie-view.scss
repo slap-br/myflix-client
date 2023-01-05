@@ -1,53 +1,47 @@
-.back-button {
+.fav-btn {
     padding: 4px 12px;
-    color: white;
-    background-color: #b81375 ;
+    color: #041615;
+    background-color: #ccb337 ;
     border: none;
     border-radius: 4px;
   }
+  .fav-btn:hover{
 
-  .important{
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-
+    color: white;
+    background-color: #937b19 ;
   }
+
+
+.cardset {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: center;
+}
 
   .labeltitle{
     font-weight: bold;
     margin-bottom: 25px;
     padding: 10px;
+    
   }
 
   .description {
     font-weight: lighter;
-    text-align: center;
+    text-align: left;
   }
 
 
-.formset{
-  padding-top: 250px;
-  text-align: center;
-  align-items: center;
-}
+// .cardimage {
+//   width: 500px;
+//   height: 700px;
+// }
 
-.formctrl {
-  margin: 10px;
-  max-width: 95%;
-}
-
-.btn-login{
-  margin-top: 15px;
+.fav-btn{
   width: 100%;
 }
 
-.cardimage {
-  width: 600px;
-  height: 800px;
-}
-
-.fav-btn{
-  position: absolute;
-  right: 10px;
-  
+.title {
+  padding: 15px;
+  font-size: 25px;
+  float:center;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Row, Col, Figure, Card } from "react-bootstrap";
+import { Button, Row, Col, Figure, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./favorite-movies.scss";
 
@@ -28,36 +28,56 @@ export const FavoriteMovies = ({ usersFavMovies }) => {
   };
 
   return (
-    <Card>
-      <Card.Body>
-        <Row>
-          <Col xs={12}>
-            <h2> Favorite movies</h2>
-          </Col>
-        </Row>
-        <Row>
-          {usersFavMovies.map((movie) => {
-            return (
-              <Col xs={12} md={6} lg={3} key={movie.id} className="fav-movie">
-                <Figure>
-                  <Link to={`/movies/${movie.id}`}>
-                    <Figure.Image
-                      crossOrigin="anonymous"
-                      src={movie.image}
-                      alt={movie.title}
-                    />
-                    <Figure.Caption>{movie.title}</Figure.Caption>
-                  </Link>
-                </Figure>
-                <Button variant="secondary" onClick={() => removeFav(movie.id)}>
-                  Remove
-                </Button>
+    <Container>
+      <Row>
+        <Col>
+          <Card bg="dark" text="light">
+            <Card.Body>
+              <Col xs={12}>
+                <Card.Title className="favtitle">
+                  Your Favorite Movies
+                </Card.Title>
               </Col>
-            );
-          })}
-        </Row>
-      </Card.Body>
-    </Card>
+              <Row>
+                {usersFavMovies.map((movie) => {
+                  return (
+                    <Col
+                      xs={12}
+                      md={6}
+                      lg={3}
+                      key={movie.id}
+                      className="fav-movie"
+                    >
+                      <Card bg="dark" text="light">
+                        <Figure>
+                          <Link to={`/movies/${movie.id}`}>
+                            <Figure.Image
+                              crossOrigin="anonymous"
+                              src={movie.image}
+                              alt={movie.title}
+                            />
+                            <Figure.Caption>{movie.title}</Figure.Caption>
+                          </Link>
+                        </Figure>
+                        <Card.Footer>
+                          <Button
+                            className="btn-remove"
+                            variant="secondary"
+                            onClick={() => removeFav(movie.id)}
+                          >
+                            Remove
+                          </Button>
+                        </Card.Footer>
+                      </Card>
+                    </Col>
+                  );
+                })}
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

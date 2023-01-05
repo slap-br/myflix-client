@@ -10028,56 +10028,58 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.open-button {
-  padding: 4px 12px;
-  color: white;
-  background-color: #b81375;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.back-button {
-  padding: 4px 12px;
-  color: white;
-  background-color: #b81375;
-  border: none;
-  border-radius: 4px;
-}
-
-.important {
-  font-weight: bold;
+.title {
   text-align: center;
   align-items: center;
 }
 
-.description {
+.description.card-text {
   font-weight: lighter;
+  text-align: center;
   text-align: center;
 }
 
 .content {
   margin-top: 30px;
 }
+.fav-btn {
+  padding: 4px 12px;
+  color: #041615;
+  background-color: #ccb337;
+  border: none;
+  border-radius: 4px;
+}
 
-.formset {
-  padding-top: 250px;
+.fav-btn:hover {
+  color: white;
+  background-color: #937b19;
+}
+
+.cardset {
+  margin-top: 30px;
+  margin-bottom: 15px;
   text-align: center;
-  align-items: center;
 }
 
-.formctrl {
-  margin: 10px;
-  max-width: 95%;
+.labeltitle {
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding: 10px;
 }
 
-.btn-login {
-  margin-top: 15px;
+.description {
+  font-weight: lighter;
+  text-align: left;
+}
+
+.fav-btn {
   width: 100%;
 }
 
-.label {
-  margin-left: 10px;
+.title {
+  padding: 15px;
+  font-size: 25px;
+  float: center;
 }
 .important {
   color: white;
@@ -10138,6 +10140,21 @@ textarea.form-control-lg {
 
 .label {
   margin-left: 10px;
+}
+
+.info-title {
+  text-align: center;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.btn-delete {
+  margin-top: 15px;
+}
+.div.row {
+  align-items: center;
 }
 
 .fav-movie {
@@ -10149,21 +10166,44 @@ textarea.form-control-lg {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: auto;
+  font-size: 20px;
 }
 .fav-movie figure img {
-  height: 300px;
+  height: 250px;
   margin: auto;
 }
 .fav-movie figure figcaption {
+  margin-top: 10px;
   text-align: center;
+  text-decoration: none;
+}
+.fav-movie figure a:link {
+  text-decoration: none;
+  margin: auto;
+  font-size: 1em;
 }
 .fav-movie button.btn {
   margin: auto;
+  width: 100%;
   display: block;
 }
 
 .card {
   margin-bottom: 15px;
+}
+
+.favtitle {
+  margin-left: 10px;
+  text-align: center;
+}
+
+.btn-remove {
+  margin-top: 20px;
+}
+
+.figure-caption {
+  color: whitesmoke;
+  text-decoration: none;
 }
 .container-mt {
   margin-top: 20px;
