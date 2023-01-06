@@ -44535,7 +44535,7 @@ const ProfileView = ({ movies  })=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    const [userData, setUserData] = _react.useState([]);
+    const [userData, setUserData] = _react.useState(null);
     const [token, setToken] = _react.useState(storedToken ? storedToken : null);
     const [currentUsername, setusername] = _react.useState(storedUser ? storedUser : null);
     const [password, setPassword] = _react.useState("");
@@ -44679,9 +44679,9 @@ const ProfileView = ({ movies  })=>{
                                 },
                                 __self: undefined,
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_userInfoDefault.default, {
-                                    username: userData.Username,
-                                    email: userData.Email,
-                                    birthday: userData.Birth_Date,
+                                    username: userData && userData.Username,
+                                    email: userData && userData.Email,
+                                    birthday: userData && userData.Birth_Date,
                                     __source: {
                                         fileName: "src/components/profile-view/profile-view.jsx",
                                         lineNumber: 144
@@ -44756,7 +44756,7 @@ const ProfileView = ({ movies  })=>{
                                 lineNumber: 167
                             },
                             __self: undefined,
-                            children: userData.length > 0 && /*#__PURE__*/ _jsxRuntime.jsx(_favoriteMoviesDefault.default, {
+                            children: userData && /*#__PURE__*/ _jsxRuntime.jsx(_favoriteMoviesDefault.default, {
                                 usersFavMovies: movies.filter((user)=>userData.FavoriteMovies.includes(user.id)
                                 ),
                                 __source: {
@@ -44772,7 +44772,7 @@ const ProfileView = ({ movies  })=>{
         ]
     }));
 };
-_s(ProfileView, "t3Tr/f55ZMQwFU0qfbrE5jfgdVc=");
+_s(ProfileView, "CQjrAy8yCXoGHeCqTQmEwPCJdPI=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
@@ -45154,7 +45154,7 @@ function UpdateUser({ handleSubmit , handleUpdate , user  }) {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
                                                 type: "text",
                                                 name: "Username",
-                                                defaultValue: user.Username,
+                                                defaultValue: user && user.Username,
                                                 placeholder: "Type your new Username",
                                                 className: "form-control",
                                                 __source: {
@@ -45211,7 +45211,7 @@ function UpdateUser({ handleSubmit , handleUpdate , user  }) {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
                                                 type: "email",
                                                 name: "Email",
-                                                defaultValue: user.Email,
+                                                defaultValue: user && user.Email,
                                                 placeholder: "Type your Email",
                                                 className: "form-control",
                                                 __source: {

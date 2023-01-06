@@ -30,7 +30,7 @@ function UpdateUser({ handleSubmit, handleUpdate, user }) {
                     <Form.Control
                       type="text"
                       name="Username"
-                      defaultValue={user.Username}
+                      defaultValue={user && user.Username}
                       placeholder="Type your new Username"
                       className="form-control"
                       // onChange={(e) => handleUpdate(e)}
@@ -52,7 +52,7 @@ function UpdateUser({ handleSubmit, handleUpdate, user }) {
                     <Form.Control
                       type="email"
                       name="Email"
-                      defaultValue={user.Email}
+                      defaultValue={user && user.Email}
                       placeholder="Type your Email"
                       className="form-control"
                       // onChange={(e) => handleUpdate(e)}

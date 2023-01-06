@@ -10,7 +10,7 @@ import "./profile-view.scss";
 export const ProfileView = ({ movies }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState(null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [currentUsername, setusername] = useState(
     storedUser ? storedUser : null
@@ -142,9 +142,9 @@ export const ProfileView = ({ movies }) => {
           <Card bg="dark" text="light">
             <Card.Body>
               <UserInfo
-                username={userData.Username}
-                email={userData.Email}
-                birthday={userData.Birth_Date}
+                username={userData && userData.Username}
+                email={userData && userData.Email}
+                birthday={userData && userData.Birth_Date}
               />
             </Card.Body>
           </Card>
@@ -165,7 +165,7 @@ export const ProfileView = ({ movies }) => {
         <Col xs={12} sm={12}>
           <Card bg="dark" text="light">
             <Card.Body>
-              {userData.length > 0 && (
+              {userData && (
                 <FavoriteMovies
                   usersFavMovies={movies.filter((user) =>
                     userData.FavoriteMovies.includes(user.id)
