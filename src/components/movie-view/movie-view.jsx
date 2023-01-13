@@ -13,7 +13,6 @@ export const MovieView = ({ movies }) => {
     if (!token) return;
 
     const url = `https://smclub.herokuapp.com/users/${storedUser.Username}/movies/${movieId}`;
-
     const requestOptions = {
       method: "POST",
       headers: {
@@ -31,12 +30,12 @@ export const MovieView = ({ movies }) => {
   };
 
   return (
-    <Container className="cardset">
+    <Container className="cardset; content">
       <Row>
         <Card bg="dark" text="light">
           <Card.Header>
-            <div>
-              <span className="title text-center "> {movie.title} </span>
+            <div className="title text-center">
+              <span> {movie.title} </span>
             </div>
             <Button
               className="fav-btn"

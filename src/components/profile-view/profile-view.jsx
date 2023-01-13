@@ -136,7 +136,7 @@ export const ProfileView = ({ movies }) => {
   };
 
   return (
-    <Container className="container-mt">
+    <Container className="content">
       <Row>
         <Col xs={4} sm={4}>
           <Card bg="dark" text="light">

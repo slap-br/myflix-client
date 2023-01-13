@@ -10040,7 +10040,7 @@ textarea.form-control-lg {
 }
 
 .content {
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
 .moviecardview {
@@ -10085,6 +10085,10 @@ textarea.form-control-lg {
   padding: 15px;
   font-size: 25px;
   float: center;
+}
+
+.content {
+  margin-top: 100px;
 }
 .important {
   color: white;
@@ -10212,5 +10216,9 @@ textarea.form-control-lg {
 }
 .container-mt {
   margin-top: 20px;
+}
+
+.content {
+  margin-top: 100px;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
