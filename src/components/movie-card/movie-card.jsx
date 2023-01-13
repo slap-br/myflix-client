@@ -9,7 +9,7 @@ export const MovieCard = ({ movie }) => {
   return (
     <Container className="content">
       <Col>
-        <Card className="h-100; card" bg="dark" text="light">
+        <Card className="h-100; moviecardview" bg="dark" text="light">
           <Card.Img variant="top" crossOrigin="anonymous" src={movie.image} />
           <Card.Body>
             <Card.Title className="title"> {movie.title} </Card.Title>

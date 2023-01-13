@@ -10042,6 +10042,11 @@ textarea.form-control-lg {
 .content {
   margin-top: 30px;
 }
+
+.moviecardview {
+  height: 640px;
+  text-align: center;
+}
 .fav-btn {
   padding: 4px 12px;
   color: #041615;
