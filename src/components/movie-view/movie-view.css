@@ -1,0 +1,50 @@
+.back-button {
+  padding: 4px 12px;
+  color: white;
+  background-color: #b81375;
+  border: none;
+  border-radius: 4px;
+}
+
+.important {
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+
+.labeltitle {
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.description {
+  font-weight: lighter;
+  text-align: center;
+}
+
+.formset {
+  padding-top: 250px;
+  text-align: center;
+  align-items: center;
+}
+
+.formctrl {
+  margin: 10px;
+  max-width: 95%;
+}
+
+.btn-login {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.cardimage {
+  width: 600px;
+  height: 800px;
+}
+
+.fav-btn {
+  position: absolute;
+  right: 10px;
+}/*# sourceMappingURL=movie-view.css.map */

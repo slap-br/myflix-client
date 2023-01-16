@@ -1,0 +1,38 @@
+// useEffect(() => {
+//   if (!token) return;
+//   fetch("https://smclub.herokuapp.com/movies", {
+//     headers: { Authorization: `Bearer ${token}` },
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const moviesFromApi = data.map((item) => {
+//         var moviesToReturn = {
+//           id: item._id,
+//           description: item.Description,
+//           image: item.ImagePath,
+//           title: item.Title,
+//           releaseYear: item.ReleaseYear,
+//           genre: {
+//             name: item.Genre.Name,
+//             description: item.Genre.Description,
+//           },
+//           director: {
+//             name: item.Director.Name,
+//             bio: item.Director.Bio,
+//             birth: item.Director.Birth,
+//             death: item.Director.Death,
+//           },
+//         };
+//         return moviesToReturn;
+//       });
+//       setMovies(moviesFromApi);
+//     });
+// }, [token]);
+
+
+// export const MainView = () => {
+//   const storedUser = JSON.parse(localStorage.getItem("user"));
+//   const storedToken = localStorage.getItem("token");
+//   const [user, setUser] = useState(storedUser ? storedUser : null);
+//   const [token, setToken] = useState(storedToken ? storedToken : null);
+//   const [movies, setMovies] = useState([]);

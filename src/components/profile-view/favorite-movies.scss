@@ -1,0 +1,54 @@
+.div.row {
+    align-items: center;
+}
+
+.fav-movie {
+    margin: 10px ;
+    figure {
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: auto;
+        font-size: 20px;
+        img {
+            height: 250px;
+            margin: auto;
+        }
+        figcaption {
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+        }
+        a:link {
+            text-decoration: none;
+            margin: auto;
+            font-size: 1em;
+        }
+    }
+    button.btn {
+        margin: auto;
+        width: 100%;
+        display: block;
+    }
+}
+
+.card {
+    margin-bottom: 15px;
+}
+
+.favtitle {
+    margin-left: 10px;
+    text-align: center;
+
+}
+
+.btn-remove{
+    margin-top: 20px;
+  }
+
+  .figure-caption{
+    color: whitesmoke;
+    text-decoration: none;
+
+  }

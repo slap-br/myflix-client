@@ -1,0 +1,51 @@
+.open-button {
+  padding: 4px 12px;
+  color: white;
+  background-color: #b81375;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.back-button {
+  padding: 4px 12px;
+  color: white;
+  background-color: #b81375;
+  border: none;
+  border-radius: 4px;
+}
+
+.important {
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+
+.description {
+  font-weight: lighter;
+  text-align: center;
+}
+
+.content {
+  margin-top: 30px;
+}
+
+.formset {
+  padding-top: 250px;
+  text-align: center;
+  align-items: center;
+}
+
+.formctrl {
+  margin: 10px;
+  max-width: 95%;
+}
+
+.btn-login {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.label {
+  margin-left: 10px;
+}/*# sourceMappingURL=movie-card.css.map */
