@@ -19,7 +19,7 @@ export const FavoriteMovies = ({ usersFavMovies }) => {
       .then((data) => {
         if (data) {
           localStorage.setItem("user", JSON.stringify(data));
-          window.open(`/${storedUser.Username}`, "_self");
+          window.open(`/`, "_self");
         }
       })
       .catch((e) => {

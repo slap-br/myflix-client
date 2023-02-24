@@ -32,53 +32,55 @@ export const MovieView = ({ movies }) => {
   return (
     <Container className="cardset; content">
       <Row>
-        <Card bg="dark" text="light">
-          <Card.Header>
-            <div className="title text-center">
-              <span> {movie.title} </span>
-            </div>
-            <Button
-              className="fav-btn"
-              size="sm"
-              variant="secondary"
-              onClick={addFavorite(movie.id)}
-            >
-              Add to Favorites
-            </Button>
-          </Card.Header>
-          <Card.Body>
-            <div>
-              <div>
-                <Card.Img
-                  className="cardimage"
-                  crossOrigin="anonymous"
-                  src={movie.image}
-                />
+        {movies.length > 0 && (
+          <Card bg="dark" text="light">
+            <Card.Header>
+              <div className="title text-center">
+                <span> {movie.title} </span>
               </div>
+              <Button
+                className="fav-btn"
+                size="sm"
+                variant="secondary"
+                onClick={addFavorite(movie.id)}
+              >
+                Add to Favorites
+              </Button>
+            </Card.Header>
+            <Card.Body>
               <div>
-                <span className="labeltitle">Description: </span>
-                <span className="description">{movie.description}</span>
+                <div>
+                  <Card.Img
+                    className="cardimage"
+                    crossOrigin="anonymous"
+                    src={movie.image}
+                  />
+                </div>
+                <div>
+                  <span className="labeltitle">Description: </span>
+                  <span className="description">{movie.description}</span>
+                </div>
+                <div>
+                  <span className="labeltitle">Release Year: </span>
+                  <span className="description">{movie.releaseYear}</span>
+                </div>
+                <div>
+                  <span className="labeltitle">Genre: </span>
+                  <span className="description">{movie.genre.name}</span>
+                </div>
+                <div>
+                  <span className="labeltitle">Director: </span>
+                  <span className="description">{movie.director.name}</span>
+                </div>
               </div>
-              <div>
-                <span className="labeltitle">Release Year: </span>
-                <span className="description">{movie.releaseYear}</span>
-              </div>
-              <div>
-                <span className="labeltitle">Genre: </span>
-                <span className="description">{movie.genre.name}</span>
-              </div>
-              <div>
-                <span className="labeltitle">Director: </span>
-                <span className="description">{movie.director.name}</span>
-              </div>
-            </div>
-          </Card.Body>
-          <Card.Footer>
-            <Link to="/">
-              <Button className="btn-login"> Back </Button>
-            </Link>
-          </Card.Footer>
-        </Card>
+            </Card.Body>
+            <Card.Footer>
+              <Link to="/">
+                <Button className="btn-login"> Back </Button>
+              </Link>
+            </Card.Footer>
+          </Card>
+        )}
       </Row>
     </Container>
   );

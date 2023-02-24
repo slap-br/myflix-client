@@ -25467,6 +25467,8 @@ const MainView = ()=>{
     const [user, setUser] = _react.useState(storedUser ? storedUser : null);
     const [token, setToken] = _react.useState(storedToken ? storedToken : null);
     const [movies, setMovies] = _react.useState([]);
+    // const movies = useSelector((state) => state.movies);
+    // const [ user, setUser ] = useState(null);
     const dispatch = _reactRedux.useDispatch();
     _react.useEffect(()=>{
         if (!token) return;
@@ -25497,6 +25499,7 @@ const MainView = ()=>{
                 return moviesToReturn;
             });
             setMovies(moviesFromApi);
+        // dispatch(setMovies(moviesFromApi)); //The movie list doesnt load
         });
     }, [
         token
@@ -25504,7 +25507,7 @@ const MainView = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 54
+            lineNumber: 58
         },
         __self: undefined,
         children: [
@@ -25517,7 +25520,7 @@ const MainView = ()=>{
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 55
+                    lineNumber: 59
                 },
                 __self: undefined
             }),
@@ -25525,13 +25528,13 @@ const MainView = ()=>{
                 className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 63
+                    lineNumber: 67
                 },
                 __self: undefined,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 64
+                        lineNumber: 68
                     },
                     __self: undefined,
                     children: [
@@ -25549,7 +25552,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 65
+                                lineNumber: 69
                             },
                             __self: undefined
                         }),
@@ -25571,7 +25574,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 79
+                                lineNumber: 83
                             },
                             __self: undefined
                         }),
@@ -25593,7 +25596,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 98
+                                lineNumber: 102
                             },
                             __self: undefined
                         }),
@@ -25618,7 +25621,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 114
+                                lineNumber: 118
                             },
                             __self: undefined
                         }),
@@ -25637,7 +25640,7 @@ const MainView = ()=>{
                             }),
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 134
+                                lineNumber: 138
                             },
                             __self: undefined
                         })
@@ -43678,19 +43681,19 @@ const MovieView = ({ movies  })=>{
                 lineNumber: 34
             },
             __self: undefined,
-            children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
+            children: movies.length > 0 && /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
                 bg: "dark",
                 text: "light",
                 __source: {
                     fileName: "src/components/movie-view/movie-view.jsx",
-                    lineNumber: 35
+                    lineNumber: 36
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Header, {
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 36
+                            lineNumber: 37
                         },
                         __self: undefined,
                         children: [
@@ -43698,13 +43701,13 @@ const MovieView = ({ movies  })=>{
                                 className: "title text-center",
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 37
+                                    lineNumber: 38
                                 },
                                 __self: undefined,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 38
+                                        lineNumber: 39
                                     },
                                     __self: undefined,
                                     children: [
@@ -43721,7 +43724,7 @@ const MovieView = ({ movies  })=>{
                                 onClick: addFavorite(movie.id),
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 40
+                                    lineNumber: 41
                                 },
                                 __self: undefined,
                                 children: "Add to Favorites"
@@ -43731,20 +43734,20 @@ const MovieView = ({ movies  })=>{
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Body, {
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 49
+                            lineNumber: 50
                         },
                         __self: undefined,
                         children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 50
+                                lineNumber: 51
                             },
                             __self: undefined,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx("div", {
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 51
+                                        lineNumber: 52
                                     },
                                     __self: undefined,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
@@ -43753,7 +43756,7 @@ const MovieView = ({ movies  })=>{
                                         src: movie.image,
                                         __source: {
                                             fileName: "src/components/movie-view/movie-view.jsx",
-                                            lineNumber: 52
+                                            lineNumber: 53
                                         },
                                         __self: undefined
                                     })
@@ -43761,7 +43764,7 @@ const MovieView = ({ movies  })=>{
                                 /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 58
+                                        lineNumber: 59
                                     },
                                     __self: undefined,
                                     children: [
@@ -43769,7 +43772,7 @@ const MovieView = ({ movies  })=>{
                                             className: "labeltitle",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 59
+                                                lineNumber: 60
                                             },
                                             __self: undefined,
                                             children: "Description: "
@@ -43778,7 +43781,7 @@ const MovieView = ({ movies  })=>{
                                             className: "description",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 60
+                                                lineNumber: 61
                                             },
                                             __self: undefined,
                                             children: movie.description
@@ -43788,7 +43791,7 @@ const MovieView = ({ movies  })=>{
                                 /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 62
+                                        lineNumber: 63
                                     },
                                     __self: undefined,
                                     children: [
@@ -43796,7 +43799,7 @@ const MovieView = ({ movies  })=>{
                                             className: "labeltitle",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 63
+                                                lineNumber: 64
                                             },
                                             __self: undefined,
                                             children: "Release Year: "
@@ -43805,7 +43808,7 @@ const MovieView = ({ movies  })=>{
                                             className: "description",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 64
+                                                lineNumber: 65
                                             },
                                             __self: undefined,
                                             children: movie.releaseYear
@@ -43815,7 +43818,7 @@ const MovieView = ({ movies  })=>{
                                 /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 66
+                                        lineNumber: 67
                                     },
                                     __self: undefined,
                                     children: [
@@ -43823,7 +43826,7 @@ const MovieView = ({ movies  })=>{
                                             className: "labeltitle",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 67
+                                                lineNumber: 68
                                             },
                                             __self: undefined,
                                             children: "Genre: "
@@ -43832,7 +43835,7 @@ const MovieView = ({ movies  })=>{
                                             className: "description",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 68
+                                                lineNumber: 69
                                             },
                                             __self: undefined,
                                             children: movie.genre.name
@@ -43842,7 +43845,7 @@ const MovieView = ({ movies  })=>{
                                 /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                                     __source: {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 70
+                                        lineNumber: 71
                                     },
                                     __self: undefined,
                                     children: [
@@ -43850,7 +43853,7 @@ const MovieView = ({ movies  })=>{
                                             className: "labeltitle",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 71
+                                                lineNumber: 72
                                             },
                                             __self: undefined,
                                             children: "Director: "
@@ -43859,7 +43862,7 @@ const MovieView = ({ movies  })=>{
                                             className: "description",
                                             __source: {
                                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                                lineNumber: 72
+                                                lineNumber: 73
                                             },
                                             __self: undefined,
                                             children: movie.director.name
@@ -43872,21 +43875,21 @@ const MovieView = ({ movies  })=>{
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Footer, {
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 76
+                            lineNumber: 77
                         },
                         __self: undefined,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                             to: "/",
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 77
+                                lineNumber: 78
                             },
                             __self: undefined,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                 className: "btn-login",
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 78
+                                    lineNumber: 79
                                 },
                                 __self: undefined,
                                 children: " Back "
@@ -44921,7 +44924,7 @@ const FavoriteMovies = ({ usersFavMovies  })=>{
         ).then((data)=>{
             if (data) {
                 localStorage.setItem("user", JSON.stringify(data));
-                window.open(`/${storedUser.Username}`, "_self");
+                window.open(`/`, "_self");
             }
         }).catch((e)=>{
             alert("Something is ERRADO!");

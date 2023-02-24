@@ -16,9 +16,11 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
+  // Original - const [movies, setMovies] = useState([]);
+  const movies = useSelector((state) => state.movies);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!token) return;
     fetch("https://smclub.herokuapp.com/movies", {
@@ -46,7 +48,8 @@ export const MainView = () => {
           };
           return moviesToReturn;
         });
-        setMovies(moviesFromApi);
+        // setMovies(moviesFromApi);
+        dispatch(setMovies(moviesFromApi)); //The movie list doesnt load
       });
   }, [token]);
 
@@ -105,7 +108,8 @@ export const MainView = () => {
                   <Col> The list is empty!</Col>
                 ) : (
                   <Col md={8} xs={12}>
-                    <MovieView movies={movies} />
+                    <MovieView />
+                    {/* <MovieView movies={movies} /> */}
                   </Col>
                 )}
               </>
