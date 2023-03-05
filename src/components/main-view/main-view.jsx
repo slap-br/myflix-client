@@ -8,18 +8,13 @@ import { ProfileView } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setMovies } from "../../redux/reducers/movies";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  // Original - const [movies, setMovies] = useState([]);
-  const movies = useSelector((state) => state.movies);
-
-  const dispatch = useDispatch();
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     if (!token) return;
@@ -48,8 +43,7 @@ export const MainView = () => {
           };
           return moviesToReturn;
         });
-        // setMovies(moviesFromApi);
-        dispatch(setMovies(moviesFromApi)); //The movie list doesnt load
+        setMovies(moviesFromApi);
       });
   }, [token]);
 
@@ -108,8 +102,7 @@ export const MainView = () => {
                   <Col> The list is empty!</Col>
                 ) : (
                   <Col md={8} xs={12}>
-                    <MovieView />
-                    {/* <MovieView movies={movies} /> */}
+                    <MovieView movies={movies} />
                   </Col>
                 )}
               </>
